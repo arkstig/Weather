@@ -1,7 +1,16 @@
-import { NextPage } from 'next'
+import type { NextPage } from 'next'
+import Form from '../components/Form'
+import StaticText from '../components/StaticText'
+import Title from '../components/Title'
 
 const Contact: NextPage = () => {
-  return <h1>Contact</h1>
+  return (
+    <>
+      <Title title={'Kontakt Oss'} />
+      <StaticText />
+      <Form />
+    </>
+  )
 }
 
 export default Contact

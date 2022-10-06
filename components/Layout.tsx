@@ -1,16 +1,14 @@
-import Navigation from './Navigation'
+import Footer from './Footer'
 
-type Props = {
-  children: JSX.Element
+type LayoutProps = {
+  children: React.ReactNode
 }
 
-const Layout = ({ children }: Props) => {
+export default function Layout({ children }: LayoutProps) {
   return (
     <>
-      <main className="layout">{children}</main>
-      <Navigation />
+      <main>{children}</main>
+      <Footer />
     </>
   )
 }
-
-export default Layout

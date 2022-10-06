@@ -1,15 +1,17 @@
 import type { NextPage } from 'next'
-import Link from 'next/link'
+import StaticText from '../components/StaticText'
+import Title from '../components/Title'
+import WeatherDropdown from '../components/WeatherDropdown'
+import WeatherTable from '../components/WeatherTable'
 
 const Home: NextPage = () => {
   return (
-    <section>
-      <h1>Home page</h1>
-      <a>Vanlig anker</a>
-      <Link href="/about">
-        <a>Client side håndtering</a>
-      </Link>
-    </section>
+    <>
+      <Title title={'Velkommer til oversikten over været'} />
+      <StaticText />
+      <WeatherDropdown />
+      <WeatherTable />
+    </>
   )
 }
 
