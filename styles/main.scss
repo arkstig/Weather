@@ -36,10 +36,21 @@ select.weather {
   padding: 1rem 1.6rem;
   background-color: var(--box-bg);
   border-radius: 6px;
-  font-size: 1.2rem;
+  font-size: 1.6rem;
 }
 
 aside {
+  position: fixed;
+  top: 25px;
+  right: 25px;
+  background-color: var(--dark-yellow);
+  display: flex;
+  gap: 1rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  padding: 1rem 2rem;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
 }
 
 footer {
@@ -48,44 +59,49 @@ footer {
   align-items: center;
   gap: 1rem;
   padding: 0 1rem;
-  flex-direction: row;
+
   nav {
     display: flex;
-    flex-direction: row;
     gap: 1rem;
+
+    a {
+      display: block;
+      color: var(--black);
+    }
   }
+
   h3 {
     font-weight: bold;
-  }
-  a {
-    display: block;
-    color: var(--black);
   }
 }
 
 .weather-table {
   margin-top: 2rem;
+
   h2 {
     font-size: 2.2rem;
     border-bottom: 2px solid var(--black);
   }
+
   li {
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid var(--black);
-
     padding: 1rem 0;
     font-size: 1.6rem;
+
     div {
       display: grid;
       grid-template-columns: repeat(3, minmax(100px, 1fr));
       gap: 2.5rem;
+
       span:nth-child(2),
       span:nth-child(3) {
         place-self: end;
       }
     }
+
     button {
       color: black;
       border: none;
@@ -101,10 +117,12 @@ form.comment {
   max-width: 350px;
   width: 100%;
   gap: 1rem;
+
   label,
   input {
     width: 100%;
   }
+
   input {
     padding: 0.6rem 1rem;
     background-color: var(--box-bg);
@@ -113,14 +131,16 @@ form.comment {
     border: 1px solid var(--black);
 
     &:placeholder {
-      filter: contrast(1.2);
+      filter: contast(1.2);
     }
   }
+
   .error {
     font-weight: 500;
     font-size: 1.4rem;
     color: red;
   }
+
   button {
     max-width: max-content;
     width: 100%;

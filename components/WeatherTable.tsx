@@ -1,7 +1,17 @@
-import { DEV_CLIENT_PAGES_MANIFEST } from 'next/dist/shared/lib/constants'
-import { data as weatherData } from '../data'
+import { WeatherContext } from '../context/WeatherContext'
 
-export default function WeatherTable() {
+type WeatherTableProps = Pick<
+  WeatherContext,
+  'currentLocation' | 'weatherData' | 'handleUpdateWeather'
+>
+
+export default function WeatherTable({
+  weatherData,
+  currentLocation,
+  handleUpdateWeather,
+}: WeatherTableProps) {
+  if (!weatherData) return null
+
   return (
     <section className="weather-table" data-testid="weather-table">
       <h2>Oversikt</h2>
@@ -13,7 +23,14 @@ export default function WeatherTable() {
               <span>{data.weather}</span>
               <span>{data.temperature}</span>
             </div>
-            <button type="button">Velg sted</button>
+            {currentLocation !== data.place.toLowerCase() ? (
+              <button
+                type="button"
+                onClick={() => handleUpdateWeather(data.place)}
+              >
+                Velg sted
+              </button>
+            ) : null}
           </li>
         ))}
       </ul>

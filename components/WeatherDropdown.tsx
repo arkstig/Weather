@@ -1,19 +1,23 @@
-import { data as weatherData } from '../data'
+import { WeatherContext } from '../context/WeatherContext'
 import { Place } from '../types'
 
-type WeatherDropdownProps = {
-  handleUpdateWeather: (place: Place) => void
-}
+type WeatherDropdownProps = Pick<
+  WeatherContext,
+  'currentLocation' | 'weatherData' | 'handleUpdateWeather'
+>
 
 export default function WeatherDropdown({
+  weatherData,
   handleUpdateWeather,
+  currentLocation,
 }: WeatherDropdownProps) {
   if (!weatherData) return null
+
   return (
     <select
       className="weather"
       data-testid="weather-dropdown"
-      value=""
+      value={currentLocation ?? ''}
       onChange={(event) => handleUpdateWeather(event.target.value as Place)}
     >
       <option value="" disabled>

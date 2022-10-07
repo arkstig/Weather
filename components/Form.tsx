@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react'
+import { Place } from '../types'
 
-type FormData = { name: string; email: string }
+type FormData = { name: string; email: string; currentLocation?: Place }
 
 type FormProps = {
   handleSubmit: ({ name, email }: FormData) => void
+  currentLocation?: Place
 }
 
-const isValid = ({ name, email }: FormData) => {
+const isValid = ({ name, email, currentLocation }: FormData) => {
   return name && name.length > 2 && email.includes('@')
 }
 
-export default function Form({ handleSubmit }: FormProps) {
-  const [data, setData] = useState({ email: '', name: '' })
+export default function Form({ handleSubmit, currentLocation }: FormProps) {
+  const [data, setData] = useState({ email: '', name: '', currentLocation })
   const [error, setError] = useState('')
   const [isDirty, setDirty] = useState(false)
 
@@ -60,8 +62,15 @@ export default function Form({ handleSubmit }: FormProps) {
           data-testid="email"
         ></input>
       </label>
-
-      <input id="place" data-testid="place" disabled type="text" />
+      {currentLocation ? (
+        <input
+          id="place"
+          data-testid="place"
+          disabled
+          type="text"
+          value={currentLocation}
+        />
+      ) : null}
       {error ? (
         <span className="error" data-testid="error">
           {error}
